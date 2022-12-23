@@ -1,4 +1,5 @@
 import express from "express"
+import path from "path"
 import { config } from "dotenv"
 import connectDB from "./config/db"
 import colors from "colors"
@@ -16,20 +17,22 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    message: "Hello from express.",
-  })
-})
-
 app.use("/api/users", userRouter)
 app.use("/api/tickets", ticketRouter)
 app.use(errorHandler)
 
-app.get("/*", (req, res) => {
-  res.status(404).json({
-    message: "Not found.",
+// * Serve frontend
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/build")))
+  app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/build/index.html"))
   })
-})
+} else {
+  app.get("/*", (req, res) => {
+    res.status(200).json({
+      message: "Welcome to Support Desk API",
+    })
+  })
+}
 
 app.listen(PORT, () => console.log("Server running at port: " + PORT))

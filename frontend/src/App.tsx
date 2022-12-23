@@ -14,7 +14,7 @@ import "react-toastify/dist/ReactToastify.css"
 
 const App: FC = () => {
   return (
-    <Router>
+    <Router basename="https://support-desk-ghost.vercel.app">
       <ToastContainer />
       <div className="container">
         <Header />

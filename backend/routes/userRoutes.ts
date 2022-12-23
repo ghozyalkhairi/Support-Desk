@@ -1,8 +1,8 @@
-import express from "express"
+import { Router } from "express"
 import { registerUser, loginUser, getMe } from "../controllers/userController"
 import protect from "../middlewares/authMiddleware"
 
-const userRouter = express.Router()
+const userRouter = Router()
 
 userRouter.post("/", registerUser)
 userRouter.post("/login", loginUser)

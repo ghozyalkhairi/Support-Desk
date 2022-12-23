@@ -2,16 +2,11 @@ import { Request, RequestHandler } from "express"
 import jwt, { Secret } from "jsonwebtoken"
 import asyncHandler from "express-async-handler"
 import User from "../models/userModel"
+import { UserType } from "../models/userModel"
 import { ObjectId } from "bson"
 
 interface Decoded extends jwt.JwtPayload {
   id: ObjectId
-}
-
-export interface UserType {
-  id: string
-  name: string
-  email: string
 }
 
 export interface ProtectReq extends Request {

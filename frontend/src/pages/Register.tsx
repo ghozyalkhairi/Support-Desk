@@ -11,7 +11,7 @@ import { FaUser } from "react-icons/fa"
 import { useAppDispatch, useAppSelector } from "../app/hook"
 import { selectAuth, reset } from "../features/auth/authSlice"
 import { register } from "../features/auth/authThunks"
-import Spinner from "../components/Spinnter"
+import Spinner from "../components/Spinner"
 
 const Register: FC = () => {
   const [formData, setFormData] = useState({

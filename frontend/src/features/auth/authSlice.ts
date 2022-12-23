@@ -33,38 +33,39 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(register.pending, (state, action) => {
-      state.isLoading = true
-    })
-    builder.addCase(register.fulfilled, (state, { payload }) => {
-      state.isLoading = false
-      state.isSuccess = true
-      state.user = payload
-    })
-    builder.addCase(register.rejected, (state, { payload }) => {
-      state.isLoading = false
-      state.user = null
-      state.isError = true
-      state.message = payload as string
-    })
-    builder.addCase(login.pending, (state, action) => {
-      state.isLoading = true
-    })
-    builder.addCase(login.fulfilled, (state, { payload }) => {
-      state.isLoading = false
-      state.isSuccess = true
-      state.user = payload
-    })
-    builder.addCase(login.rejected, (state, { payload }) => {
-      state.isLoading = false
-      state.user = null
-      state.isError = true
-      state.message = payload as string
-    })
-    builder.addCase(logout.fulfilled, (state, { payload }) => {
-      state.isLoading = false
-      state.user = payload
-    })
+    builder
+      .addCase(register.pending, (state, action) => {
+        state.isLoading = true
+      })
+      .addCase(register.fulfilled, (state, { payload }) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.user = payload
+      })
+      .addCase(register.rejected, (state, { payload }) => {
+        state.isLoading = false
+        state.user = null
+        state.isError = true
+        state.message = payload as string
+      })
+      .addCase(login.pending, (state, action) => {
+        state.isLoading = true
+      })
+      .addCase(login.fulfilled, (state, { payload }) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.user = payload
+      })
+      .addCase(login.rejected, (state, { payload }) => {
+        state.isLoading = false
+        state.user = null
+        state.isError = true
+        state.message = payload as string
+      })
+      .addCase(logout.fulfilled, (state, { payload }) => {
+        state.isLoading = false
+        state.user = payload
+      })
   },
 })
 

@@ -1,10 +1,11 @@
 import { Schema, model } from "mongoose"
 
-interface UserType {
+export interface UserType {
   name: string
   email: string
   password: string
-  isAdmin: boolean
+  isAdmin?: boolean
+  id?: string
 }
 
 const userSchema = new Schema<UserType>(

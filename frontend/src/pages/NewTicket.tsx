@@ -5,7 +5,7 @@ import { selectAuth } from "../features/auth/authSlice"
 import { createTicket } from "../features/tickets/ticketThunks"
 import { reset, selectTicket } from "../features/tickets/ticketSlice"
 import { toast } from "react-toastify"
-import Spinner from "../components/Spinnter"
+import Spinner from "../components/Spinner"
 import BackButton from "../components/BackButton"
 
 const NewTicket: FC = () => {
@@ -30,11 +30,13 @@ const NewTicket: FC = () => {
     if (isSuccess) {
       toast.success("Success", { position: "top-center" })
       dispatch(reset())
+      navigate("/")
     }
     if (isError) {
       toast.error(message, { position: "top-center" })
       dispatch(reset())
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSuccess, isError])
   if (isLoading) return <Spinner />
   return (

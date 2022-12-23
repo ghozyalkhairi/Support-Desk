@@ -11,7 +11,7 @@ import { selectAuth, reset } from "../features/auth/authSlice"
 import { login } from "../features/auth/authThunks"
 import { toast } from "react-toastify"
 import { FaSignInAlt } from "react-icons/fa"
-import Spinner from "../components/Spinnter"
+import Spinner from "../components/Spinner"
 
 const Login: FC = () => {
   const [formData, setFormData] = useState({

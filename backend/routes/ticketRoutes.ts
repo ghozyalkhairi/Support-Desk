@@ -1,4 +1,4 @@
-import express from "express"
+import { Router } from "express"
 import protect from "../middlewares/authMiddleware"
 import {
   createTickets,
@@ -7,9 +7,10 @@ import {
   deleteTicket,
   updateTicket,
 } from "../controllers/ticketController"
+import noteRouter from "./noteRoutes"
 
-const ticketRouter = express.Router()
-
+const ticketRouter = Router()
+ticketRouter.use("/:ticketId/notes", noteRouter)
 ticketRouter.route("/").get(protect, getTickets).post(protect, createTickets)
 ticketRouter
   .route("/:id")
